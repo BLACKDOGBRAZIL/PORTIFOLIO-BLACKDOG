@@ -63,8 +63,9 @@ document.addEventListener('mouseenter', () => {
     // Only activate on touch devices
     if (!('ontouchstart' in window)) return;
 
-    let tx = window.innerWidth / 2;
-    let ty = window.innerHeight / 2;
+    // Previne Layout Reflow precoce (LCP Block) evitando window.innerWidth no preload
+    let tx = 0;
+    let ty = 0;
     let gx = tx, gy = ty;
     let touching = false;
     let fadeTimer = null;
@@ -132,7 +133,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const f = btn.dataset.filter;
-        document.querySelectorAll('.port-card').forEach(card => {
+        document.querySelectorAll('.port-item').forEach(card => {
             card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
         });
     });
@@ -187,101 +188,107 @@ function handleSubmit() {
 }
 
 /* ── HAMBURGER MENU ── */
-const hamburger = document.getElementById('hamburger');
+const hamburgers = document.querySelectorAll('.nav-hamburger');
 let menuOpen = false;
 
-hamburger && hamburger.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    // Toggle a simple overlay nav
-    let overlay = document.getElementById('mobile-menu');
-    const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
-    const overlayBg = isLightMode ? 'rgba(245,241,232,0.98)' : 'rgba(10,10,8,0.97)';
-    const overlayTextColor = isLightMode ? '#1A1916' : '#F5F1E8';
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.id = 'mobile-menu';
-        overlay.style.cssText = `
-      position:fixed;top:60px;left:0;right:0;bottom:0;
-      background:${overlayBg};z-index:98;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      gap:32px;opacity:0;transition:opacity .25s ease;pointer-events:none;
-    `;
-        const lang = currentLang;
-        const links = [
-            { href: '#portfolio', key: 'nav.work' },
-            { href: '#servicos', key: 'nav.services' },
-            { href: '#sobre', key: 'nav.about' },
-            { href: '#contato', key: 'nav.contact' },
-        ];
-        links.forEach(l => {
-            const a = document.createElement('a');
-            a.href = l.href;
-            a.dataset.i18n = l.key;
-            a.textContent = t(l.key);
-            a.style.cssText = 'font-family:var(--font-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);transition:color .2s';
-            a.addEventListener('click', () => closeMobileMenu());
-            overlay.appendChild(a);
-        });
-        // Theme toggle inside menu
-        const themeDiv = document.createElement('div');
-        themeDiv.style.cssText = 'display:flex;justify-content:center;margin-top:24px;';
-        const themeBtn2 = document.createElement('button');
-        themeBtn2.id = 'theme-toggle-mobile';
-        const isDark = !document.documentElement.getAttribute('data-theme');
-        const currentLangVal = document.documentElement.getAttribute('data-lang') || 'pt';
-        const mLabelText = isDark ? (currentLangVal === 'en' ? 'Light Mode' : 'Modo Claro') : (currentLangVal === 'en' ? 'Dark Mode' : 'Modo Escuro');
-        const SVG_SUN2 = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
-        const SVG_MOON2 = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
-        themeBtn2.innerHTML = `<span id="theme-icon-mobile" style="display:flex;align-items:center;">${isDark ? SVG_SUN2 : SVG_MOON2}</span><span id="theme-label-mobile" style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;margin-left:6px;">${mLabelText}</span>`;
-        themeBtn2.setAttribute('aria-label', 'Toggle theme');
-        themeBtn2.style.cssText = 'background:none;border:.5px solid rgba(245,241,232,0.2);cursor:none;padding:8px 16px;display:flex;align-items:center;gap:0;color:var(--text-3);transition:border-color .2s,color .2s;';
-        themeBtn2.addEventListener('click', () => { toggleTheme(); });
-        themeDiv.appendChild(themeBtn2);
-        overlay.appendChild(themeDiv);
-
-        // Lang toggle inside menu
-        const lt = document.createElement('div');
-        lt.style.cssText = 'display:flex;gap:0;border:.5px solid rgba(245,241,232,.14);margin-top:12px';
-        ['pt', 'en'].forEach(l => {
-            const b = document.createElement('button');
-            b.textContent = l.toUpperCase();
-            b.style.cssText = 'font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;padding:7px 16px;background:transparent;color:var(--text-3);border:none;text-transform:uppercase';
-            if (l === currentLang) { b.style.background = 'var(--accent)'; b.style.color = 'var(--text-1)'; }
-            b.onclick = () => {
-                setLang(l);
-                // Update active state visually
-                lt.querySelectorAll('button').forEach(btn => {
-                    btn.style.background = 'transparent';
-                    btn.style.color = 'var(--text-3)';
-                });
-                b.style.background = 'var(--accent)';
-                b.style.color = 'var(--text-1)';
+hamburgers.forEach(hamburger => {
+    hamburger.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        // Toggle the Glassmorphism overlay
+        let glOverlay = document.getElementById('gl-overlay');
+        const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+        
+        if (!glOverlay) {
+            glOverlay = document.createElement('div');
+            glOverlay.id = 'gl-overlay';
+            
+            const modal = document.createElement('div');
+            modal.className = 'gl-modal';
+            
+            const label = document.createElement('div');
+            label.className = 'gl-label';
+            label.textContent = 'MENU';
+            
+            const linksWrap = document.createElement('div');
+            linksWrap.className = 'gl-links';
+            
+            const links = [
+                { href: '#sobre', key: 'nav.about' },
+                { href: '#portfolio', key: 'nav.work' },
+                { href: '#servicos', key: 'nav.services' },
+                { href: '#contato', key: 'nav.contact' },
+            ];
+            
+            links.forEach(l => {
+                const a = document.createElement('a');
+                a.href = l.href;
+                a.dataset.i18n = l.key;
+                a.textContent = typeof t === 'function' ? t(l.key) : l.key.split('.')[1];
+                a.addEventListener('click', () => closeMobileMenu());
+                linksWrap.appendChild(a);
+            });
+            
+            const footer = document.createElement('div');
+            footer.className = 'gl-footer';
+            
+            const cEmail = document.createElement('div');
+            cEmail.className = 'gl-col';
+            cEmail.innerHTML = `<span>Email</span><a href="mailto:blckdogbrasil@gmail.com">blckdogbrasil@gmail.com</a>`;
+            
+            const cPhone = document.createElement('div');
+            cPhone.className = 'gl-col';
+            cPhone.innerHTML = `<span>WhatsApp</span><a href="https://wa.me/5581998920712" target="_blank" rel="noopener">+55 81 99892-0712</a>`;
+            
+            footer.appendChild(cEmail);
+            footer.appendChild(cPhone);
+            
+            const btnQuote = document.createElement('button');
+            btnQuote.className = 'gl-btn-quote';
+            btnQuote.innerHTML = `<span class="cross-icon" style="font-size:16px;">✧</span> <span data-i18n="nav.cta">${typeof t === 'function' ? t('nav.cta') : 'Iniciar Projeto'}</span>`;
+            btnQuote.onclick = () => {
+                closeMobileMenu();
+                document.getElementById('contato').scrollIntoView({behavior:'smooth'});
             };
-            lt.appendChild(b);
-        });
-        overlay.appendChild(lt);
-        document.body.appendChild(overlay);
-    }
-    if (menuOpen) {
-        overlay.style.pointerEvents = 'auto';
-        requestAnimationFrame(() => overlay.style.opacity = '1');
-        hamburger.querySelectorAll('span')[0].style.transform = 'rotate(45deg) translate(4px,4px)';
-        hamburger.querySelectorAll('span')[1].style.opacity = '0';
-        hamburger.querySelectorAll('span')[2].style.transform = 'rotate(-45deg) translate(4px,-4px)';
-    } else {
-        closeMobileMenu();
-    }
+            
+            modal.appendChild(label);
+            modal.appendChild(linksWrap);
+            modal.appendChild(footer);
+            modal.appendChild(btnQuote);
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'gl-close-btn';
+            closeBtn.setAttribute('aria-label', 'Fechar menu');
+            closeBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>`;
+            closeBtn.onclick = () => closeMobileMenu();
+            
+            glOverlay.appendChild(modal);
+            glOverlay.appendChild(closeBtn);
+            
+            document.body.appendChild(glOverlay);
+        }
+        
+        if (menuOpen) {
+            glOverlay.classList.add('active');
+            hamburgers.forEach(h => {
+                h.querySelectorAll('span')[0].style.transform = 'rotate(45deg) translate(4px,4px)';
+                h.querySelectorAll('span')[1].style.opacity = '0';
+                h.querySelectorAll('span')[2].style.transform = 'rotate(-45deg) translate(4px,-4px)';
+            });
+        } else {
+            closeMobileMenu();
+        }
+    });
 });
 
 function closeMobileMenu() {
     menuOpen = false;
-    const overlay = document.getElementById('mobile-menu');
-    if (overlay) { overlay.style.opacity = '0'; overlay.style.pointerEvents = 'none'; }
-    if (hamburger) {
-        hamburger.querySelectorAll('span')[0].style.transform = '';
-        hamburger.querySelectorAll('span')[1].style.opacity = '';
-        hamburger.querySelectorAll('span')[2].style.transform = '';
-    }
+    const glOverlay = document.getElementById('gl-overlay');
+    if (glOverlay) { glOverlay.classList.remove('active'); }
+    hamburgers.forEach(h => {
+        h.querySelectorAll('span')[0].style.transform = '';
+        h.querySelectorAll('span')[1].style.opacity = '';
+        h.querySelectorAll('span')[2].style.transform = '';
+    });
 }
 
 /* ── EMAILJS — ENVIO DIRETO ── */
@@ -294,6 +301,7 @@ function closeMobileMenu() {
 /* ── ACTIVE NAV ── */
 const sections = ['hero', 'sobre', 'portfolio', 'servicos', 'contato'];
 const navLinks = document.querySelectorAll('.nav-links a');
+
 window.addEventListener('scroll', () => {
     const y = window.scrollY + 80;
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
@@ -307,29 +315,15 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* ── INIT ── */
+document.documentElement.setAttribute('data-lang', currentLang);
+
 window.addEventListener('load', () => {
-    applyLang(currentLang);
-    document.documentElement.setAttribute('data-lang', currentLang);
     document.querySelectorAll('#hero .reveal').forEach((el, i) => {
         setTimeout(() => el.classList.add('visible'), 100 + i * 120);
     });
 });
 
 
-
-
-/* ══════════════════════════════════════
-   1. THREE.JS — HERO CANVAS
-   Floating wireframe logo geometry
-   reacts to mouse + auto-rotates
-══════════════════════════════════════ */
-
-/* ══════════════════════════════════════
-   4. KINETIC TYPOGRAPHY
-   Split hero h1 words into animated spans
-   + Variable font weight on mouse
-══════════════════════════════════════ */
-/* kinetic type removed — pure CSS animation */
 
 
 /* ══════════════════════════════════════
@@ -430,7 +424,8 @@ window.addEventListener('load', () => {
     const nav = document.getElementById('nav');
     if (!nav) return;
     window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 40);
+        const isScrolled = window.scrollY > 80;
+        nav.classList.toggle('scrolled', isScrolled);
     }, { passive: true });
 })();
 
@@ -609,13 +604,6 @@ window.addEventListener('load', () => {
     // Enable context on first any-click (required by browsers)
     document.addEventListener('click', () => { if (!ctx) getCtx(); }, { once: true, passive: true });
 })();
-
-
-/* ══════════════════════════════════════
-   BLACK DOG AI CHAT
-   Powered by Claude (Anthropic API)
-   System prompt trained on BD Studio
-══════════════════════════════════════ */
 
 
 /* ══════════════════════════════════════

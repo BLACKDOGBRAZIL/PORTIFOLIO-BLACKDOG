@@ -1,13 +1,14 @@
 const translations = {
     pt: {
         /* NAV */
+        'nav.home': 'Home',
         'nav.work': 'Trabalhos',
         'nav.services': 'Serviços',
         'nav.about': 'Sobre',
         'nav.contact': 'Contato',
         'nav.cta': 'Iniciar Projeto',
         /* HERO */
-        'hero.kicker': '— Black Dog Studio · Soluções Digitais',
+        'hero.kicker': 'Black Dog Studio · Soluções Digitais',
         'hero.h1': 'Experiências que marcam.<br>Sites que <em>convertem.</em>',
         'hero.sub': 'Combinamos estratégia de ponta e design imersivo para criar plataformas, e-commerces e identidades que elevam o valor do seu negócio no digital.',
         'hero.cta1': 'Solicitar Orçamento',
@@ -85,28 +86,29 @@ const translations = {
         'wa.service': 'Serviço',
         'wa.message': 'Mensagem',
         'wa.unknown': 'Não informado',
-        /* CHAT */
-        'chat.bubbleLabel': 'Fale com a IA',
-        'chat.subtitle': 'Assistente do Studio · Online',
-        'chat.placeholder': 'Pergunte sobre serviços, preços...',
-        'chat.footerNote': 'Powered by Claude AI · Black Dog Studio',
-        'chat.welcome': 'Olá! Sou a IA do **Black Dog Studio**. Posso te ajudar com informações sobre nossos serviços, processos e preços. O que você gostaria de saber?',
-        'chat.error': 'Ops, algo deu errado. Tente novamente.',
-        'chat.whatsapp': 'Quer continuar no WhatsApp? [Clique aqui]',
         /* Missing card category */
         'cat.rawfield': 'Branding Digital · Landing Page',
+        'cat.rawfield-short': 'Branding',
+        'svc.featured': 'Mais procurado',
+        'tag.prototype': 'Prototipação',
+        'tag.usability': 'Usabilidade',
+        'tag.identity': 'Identidade',
+        'tag.payments': 'Pagamentos',
+        'tag.catalog': 'Catálogo',
+        'tag.security': 'Segurança',
     },
     en: {
         /* NAV */
+        'nav.home': 'Home',
         'nav.work': 'Work',
         'nav.services': 'Services',
         'nav.about': 'About',
         'nav.contact': 'Contact',
         'nav.cta': 'Start a Project',
         /* HERO */
-        'hero.kicker': '— Black Dog Studio · Digital Solutions',
+        'hero.kicker': 'Black Dog Studio · Digital Solutions',
         'hero.h1': 'Experiences that resonate.<br>Websites that <em>convert.</em>',
-        'hero.sub': 'We blend cutting-edge strategy and immersive design to build platforms, e-commerces and identities that elevate your brand value in the digital world.',
+        'hero.sub': 'We blend cutting-edge strategy and immersive design to build platforms, e-commerce stores, and identities that elevate your brand value in the digital world.',
         'hero.cta1': 'Request a Quote',
         'hero.cta2': 'Start a Project',
         'hero.available': 'Available for new projects',
@@ -121,8 +123,8 @@ const translations = {
         /* ABOUT */
         'about.label': '— About',
         'about.title': 'A global<br>web design<br>studio.',
-        'about.body': '<strong>Black Dog Studio</strong> is a web design studio focused on creating memorable digital experiences. We work with clients across Brazil and worldwide, combining strategy, design and technology to deliver solutions that drive real results.<br><br>We believe great design goes beyond aesthetics — it communicates, converts and differentiates. Every project is treated uniquely, with relentless attention to detail and focus on what truly matters: your business.',
-        'about.quote': '"Design is not just what it looks like — design is how it works."',
+        'about.body': '<strong>Black Dog Studio</strong> is a web design studio focused on creating memorable digital experiences. We work with clients across Brazil and worldwide, combining strategy, design, and technology to deliver solutions that drive real results.<br><br>We believe great design goes beyond aesthetics — it communicates, converts, and differentiates. Every project is handled with a unique approach, relentless attention to detail, and a strict focus on what truly matters: your business.',
+        'about.quote': '"Design is not just what it looks like and feels like. Design is how it works."',
         /* TAGS */
         'tag.responsive': 'Responsive Design',
         'tag.worldwide': 'Worldwide',
@@ -145,20 +147,20 @@ const translations = {
         'services.subtitle': 'Complete digital solutions to transform your online presence and drive business growth.',
         'svc.more': 'Learn more →',
         'svc1.name': 'Website Design',
-        'svc1.desc': 'We build responsive, modern and conversion-optimized websites, with a focus on user experience and performance.',
+        'svc1.desc': 'We build responsive, modern, and conversion-optimized websites, focusing on user experience, stability, and performance.',
         'svc2.name': 'UI/UX Design',
         'svc2.desc': 'We create intuitive and attractive interfaces that provide an exceptional and memorable user experience.',
         'svc3.name': 'Digital Branding',
-        'svc3.desc': 'We develop visual identities that communicate the essence of your brand and stand out in the digital landscape.',
+        'svc3.desc': 'We develop visual identities that communicate the core essence of your brand, making it stand out in the digital landscape.',
         'svc4.name': 'Responsive Design',
-        'svc4.desc': 'We ensure your website works perfectly on all devices, from smartphones to desktops.',
-        'svc5.desc': 'We build attractive and functional online stores that convert visitors into customers and increase your sales.',
+        'svc4.desc': 'We ensure your website works flawlessly on all devices, from smartphones and tablets to desktops.',
+        'svc5.desc': 'We build attractive and highly functional online stores that convert visitors into loyal customers and increase your sales.',
         'svc6.name': 'Maintenance',
-        'svc6.desc': 'We offer ongoing support to keep your website always up to date, secure and running perfectly.',
+        'svc6.desc': 'We offer ongoing technical support to keep your website always up-to-date, secure, and running perfectly.',
         /* CONTACT */
         'contact.label': '— Contact',
         'contact.title': 'Let\'s work<br>together.',
-        'contact.sub': 'Have a project in mind? Get in touch and let\'s turn your idea into digital reality.',
+        'contact.sub': 'Have a project in mind? Get in touch and let\'s turn your idea into a digital reality.',
         'contact.locationLabel': 'Location',
         /* FORM */
         'form.name': 'Name',
@@ -182,16 +184,16 @@ const translations = {
         'wa.service': 'Service',
         'wa.message': 'Message',
         'wa.unknown': 'Not provided',
-        /* CHAT */
-        'chat.bubbleLabel': 'Chat with AI',
-        'chat.subtitle': 'Studio Assistant · Online',
-        'chat.placeholder': 'Ask about services, pricing...',
-        'chat.footerNote': 'Powered by Claude AI · Black Dog Studio',
-        'chat.welcome': 'Hi! I\'m the **Black Dog Studio** AI. I can help you with info about our services, process and pricing. What would you like to know?',
-        'chat.error': 'Oops, something went wrong. Please try again.',
-        'chat.whatsapp': 'Want to continue on WhatsApp? [Click here]',
         /* Missing card category */
         'cat.rawfield': 'Digital Branding · Landing Page',
+        'cat.rawfield-short': 'Branding',
+        'svc.featured': 'Most requested',
+        'tag.prototype': 'Prototyping',
+        'tag.usability': 'Usability',
+        'tag.identity': 'Identity',
+        'tag.payments': 'Payments',
+        'tag.catalog': 'Catalog',
+        'tag.security': 'Security',
     }
 };
 
@@ -211,32 +213,10 @@ let currentLang = (function () {
     localStorage.removeItem('bd-lang');
     localStorage.removeItem('bd-lang-v');
 
-    // Default to PT immediately — IP geolocation corrects if needed
-    fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) })
-        .then(r => r.json())
-        .then(data => {
-            if (localStorage.getItem('bd-lang-v') === BD_LANG_VERSION) return; // user chose manually while waiting
-            const country = (data.country_code || '').toUpperCase();
-            const ptCountries = ['BR', 'PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL', 'GQ'];
-            const detected = ptCountries.includes(country) ? 'pt' : 'en';
-            if (detected !== currentLang) {
-                currentLang = detected;
-                applyLang(detected);
-            }
-        })
-        .catch(() => {
-            // IP failed — use browser language as fallback
-            if (localStorage.getItem('bd-lang-v') === BD_LANG_VERSION) return;
-            const bl = (navigator.language || 'pt').toLowerCase();
-            const ptL = ['pt', 'pt-br', 'pt-pt', 'pt-ao', 'pt-mz'];
-            const detected = ptL.some(l => bl.startsWith(l)) ? 'pt' : 'en';
-            if (detected !== currentLang) {
-                currentLang = detected;
-                applyLang(detected);
-            }
-        });
-
-    return 'pt'; // default while IP detection runs
+    // Default to browser language immediately
+    const bl = (navigator.language || 'pt').toLowerCase();
+    const ptL = ['pt', 'pt-br', 'pt-pt', 'pt-ao', 'pt-mz'];
+    return ptL.some(l => bl.startsWith(l)) ? 'pt' : 'en';
 })();
 
 function t(key) {
@@ -305,8 +285,8 @@ function applyLang(lang) {
 
     /* page title */
     document.title = lang === 'en'
-        ? 'Black Dog Studio — Web Design'
-        : 'Black Dog Studio — Web Design';
+        ? 'Black Dog Studio — Web Design | UI/UX | Digital Branding'
+        : 'Black Dog Studio — Web Design | UI/UX | Branding Digital';
 
     /* rebuild ticker */
     buildTicker();
@@ -316,3 +296,6 @@ function applyLang(lang) {
 function setLang(lang) {
     applyLang(lang);
 }
+
+// Inicializa a tradução sincronicamente no fim do carregamento do documento
+applyLang(currentLang);

@@ -5,6 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Black Dog Studio — Web Design | UI/UX | Branding Digital</title>
+  
+  <!-- FAVICON -->
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+
   <meta name="description"
     content="Black Dog Studio é um estúdio de web design premium com atuação global. Criamos sites, e-commerces e identidades visuais que convertem. Atendemos clientes no Brasil e no mundo.">
   <meta name="keywords"
@@ -73,6 +80,10 @@
   "openingHours": "Mo-Fr 09:00-18:00"
 }
 </script>
+  <!-- Preloads de alta prioridade (Acelerar FCP/LCP) -->
+  <link rel="preload" href="assets/img/logo.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="css/style.css" as="style">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -81,8 +92,8 @@
 
   <link rel="stylesheet" href="css/style.css">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- Prevent flash of wrong theme — apply before render -->
   <script>
@@ -123,7 +134,11 @@
   <nav id="nav">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo" aria-label="Black Dog Studio">
-        <img src="assets/img/logo.png" alt="Black Dog Studio" class="nav-logo-img">
+        <img src="assets/img/logo.webp" alt="Black Dog Studio" class="nav-logo-img" width="144" height="36"
+          fetchpriority="high">
+        <svg class="nav-logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
       </a>
       <ul class="nav-links">
         <li><a href="#portfolio" data-i18n="nav.work">Trabalhos</a></li>
@@ -170,421 +185,414 @@
     </div>
   </nav>
 
-
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-left">
-      <div class="hero-kicker" data-i18n="hero.kicker">— Black Dog Studio · Soluções Digitais</div>
-      <h1 class="hero-h1" data-i18n-html="hero.h1">
-        Transformamos<br>sua <em>presença</em><br>digital.
-      </h1>
-      <p class="hero-sub" data-i18n="hero.sub">
-        Combinamos estratégia de ponta e design imersivo para criar plataformas, e-commerces e identidades que elevam o
-        valor do seu negócio no digital.
-      </p>
-      <div class="hero-ctas">
-        <button class="btn-primary" data-i18n="hero.cta1"
-          onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Solicitar Orçamento</button>
-        <button class="btn-secondary" data-i18n="hero.cta2"
-          onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Iniciar Projeto</button>
+  <main>
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-left">
+        <div class="hero-kicker reveal" data-i18n="hero.kicker">— Black Dog Studio · Soluções Digitais</div>
+        <h1 class="hero-h1 reveal reveal-delay-1" data-i18n-html="hero.h1">
+          Transformamos<br>sua <em>presença</em><br>digital.
+        </h1>
+        <p class="hero-sub reveal reveal-delay-2" data-i18n="hero.sub">
+          Combinamos estratégia de ponta e design imersivo para criar plataformas, e-commerces e identidades que elevam
+          o
+          valor do seu negócio no digital.
+        </p>
+        <div class="hero-ctas reveal reveal-delay-3">
+          <button class="btn-primary" data-i18n="hero.cta1"
+            onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Solicitar
+            Orçamento</button>
+          <button class="btn-secondary" data-i18n="hero.cta2"
+            onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Iniciar Projeto</button>
+        </div>
+        <div class="hero-available reveal reveal-delay-3" data-i18n="hero.available">Disponível para novos projetos</div>
       </div>
-      <div class="hero-available" data-i18n="hero.available">Disponível para novos projetos</div>
-    </div>
-    <div class="hero-right reveal" id="hero-canvas-wrap">
-      <!-- Showreel video — coloque o arquivo video-reel.mp4 na mesma pasta -->
+      <div class="hero-right reveal" id="hero-canvas-wrap">
+        <!-- Showreel video — coloque o arquivo video-reel.mp4 na mesma pasta -->
+        <!--
       <video id="hero-video" autoplay muted loop playsinline
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;z-index:1;">
-        <source src="video-reel.mp4" type="video/mp4">
+        <!- - <source src="video-reel.mp4" type="video/mp4"> - ->
       </video>
-      <!-- Overlay escuro sobre o vídeo para manter legibilidade -->
-      <div id="hero-video-overlay"
-        style="position:absolute;inset:0;background:rgba(10,10,8,0.55);z-index:2;opacity:0;transition:opacity 1s;pointer-events:none;">
+      -->
+        <!-- Overlay escuro sobre o vídeo para manter legibilidade -->
+        <div id="hero-video-overlay"
+          style="position:absolute;inset:0;background:rgba(10,10,8,0.55);z-index:2;opacity:0;transition:opacity 1s;pointer-events:none;">
+        </div>
+        <!-- Three.js canvas (fallback quando não há vídeo) -->
+        <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:0;"></canvas>
+        <span class="hero-img-index mono" style="z-index:3;position:absolute;bottom:16px;right:20px;">BD — 2026</span>
       </div>
-      <!-- Three.js canvas (fallback quando não há vídeo) -->
-      <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:0;"></canvas>
-      <span class="hero-img-index mono" style="z-index:3;position:absolute;bottom:16px;right:20px;">BD — 2026</span>
-    </div>
-  </section>
+    </section>
 
-  <!-- TICKER -->
-  <div id="ticker">
-    <div class="ticker-track" id="ticker-track">
-      <!-- preenchido via JS -->
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div id="stats">
-    <div class="stat-item reveal">
-      <div class="stat-num"><span class="count" data-target="24">0</span><sup>+</sup></div>
-      <div class="stat-label" data-i18n="stats.projects">Projetos Entregues</div>
-    </div>
-    <div class="stat-item reveal reveal-delay-1">
-      <div class="stat-num"><span class="count" data-target="18">0</span><sup>+</sup></div>
-      <div class="stat-label" data-i18n="stats.clients">Clientes Satisfeitos</div>
-    </div>
-    <div class="stat-item reveal reveal-delay-2">
-      <div class="stat-num"><span class="count" data-target="6">0</span><sup> <span
-            data-i18n="stats.yearsSup">anos</span></sup></div>
-      <div class="stat-label" data-i18n="stats.years">de Experiência</div>
-    </div>
-  </div>
-
-  <!-- SOBRE -->
-  <section id="sobre">
-    <div class="sobre-left">
-      <div>
-        <div class="sobre-section-label reveal" data-i18n="about.label">— Sobre</div>
-        <h2 class="sobre-title reveal reveal-delay-1" data-i18n-html="about.title">Um studio de<br>design<br>global.
-        </h2>
-      </div>
-
-    </div>
-    <div class="sobre-right">
-      <p class="sobre-body reveal" data-i18n-html="about.body">
-        O <strong>Black Dog Studio</strong> é um estúdio de web design focado em criar experiências digitais memoráveis.
-        Combinamos estratégia, design e tecnologia para entregar soluções que transformam a presença online dos nossos
-        clientes e geram resultados reais.<br><br>Acreditamos que um bom design vai além da estética — ele comunica,
-        converte e diferencia. Cada projeto é tratado de forma única, com atenção aos detalhes e foco no que realmente
-        importa: o seu negócio.
-      </p>
-      <blockquote class="sobre-manifesto reveal reveal-delay-1" data-i18n="about.quote">
-        "Design não é como uma coisa parece, é como ela funciona."
-      </blockquote>
-      <div class="sobre-tags reveal reveal-delay-2">
-        <span class="sobre-tag">Web Design</span>
-        <span class="sobre-tag">UI/UX</span>
-        <span class="sobre-tag">Branding</span>
-        <span class="sobre-tag">E-commerce</span>
-        <span class="sobre-tag" data-i18n="tag.responsive">Design Responsivo</span>
-        <span class="sobre-tag" data-i18n="tag.maintenance">Manutenção</span>
-        <span class="sobre-tag" data-i18n="tag.worldwide">Global</span>
+    <!-- TICKER -->
+    <div id="ticker">
+      <div class="ticker-track" id="ticker-track">
+        <!-- preenchido via JS -->
       </div>
     </div>
-  </section>
 
-  <!-- PORTFÓLIO -->
-  <section id="portfolio">
-    <div class="portfolio-header">
-      <div>
-        <div class="portfolio-section-num mono reveal" data-i18n="portfolio.sectionNum">03 — Trabalhos</div>
-        <h2 class="portfolio-title reveal reveal-delay-1" data-i18n="portfolio.title">Projetos</h2>
+    <!-- STATS -->
+    <div id="stats">
+      <div class="stat-item reveal">
+        <div class="stat-num"><span class="count" data-target="24">0</span><sup>+</sup></div>
+        <div class="stat-label" data-i18n="stats.projects">Projetos Entregues</div>
       </div>
-      <div class="portfolio-filters reveal reveal-delay-2">
-        <button class="filter-btn active" data-filter="all" data-i18n="filter.all">Todos</button>
-        <button class="filter-btn" data-filter="site" data-i18n="filter.sites">Sites</button>
-        <button class="filter-btn" data-filter="branding" data-i18n="filter.branding">Branding</button>
-        <button class="filter-btn" data-filter="uiux">UI/UX</button>
-        <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num"><span class="count" data-target="18">0</span><sup>+</sup></div>
+        <div class="stat-label" data-i18n="stats.clients">Clientes Satisfeitos</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num"><span class="count" data-target="6">0</span><sup>+</sup></div>
+        <div class="stat-label" data-i18n="stats.years">de Experiência</div>
       </div>
     </div>
-    <div class="portfolio-grid" id="portfolio-grid">
-      <!-- CARD 01 — Studio Abuchain (REAL) -->
-      <a class="port-card port-card-real reveal" data-category="site" href="https://www.studioabuchain.com/"
-        target="_blank" rel="noopener" style="text-decoration:none;display:block;">
-        <div class="port-img-wrap">
-          <span class="port-img-num mono">01</span>
-          <div class="port-img-placeholder mono"
-            style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:1;background:#0C0C0A;background:var(--card-placeholder,#0C0C0A)">
-            <span style="font-size:16px;font-weight:500;color:#F5F1E8;font-family:var(--font-sans)">Studio
-              Abuchain</span>
-            <span style="font-size:12px;color:#8C8A82;font-family:var(--font-mono)">Arquitetura · Milão, Itália</span>
-          </div>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+      <div class="sobre-left">
+        <div>
+          <div class="sobre-section-label reveal" data-i18n="about.label">— Sobre</div>
+          <h2 class="sobre-title reveal reveal-delay-1" data-i18n-html="about.title">Um studio de<br>design<br>global.
+          </h2>
         </div>
-        <div class="port-card-info">
-          <div>
-            <div class="port-card-name">Studio Abuchain</div>
-            <div class="port-card-cat">Arquitetura · Milão, Itália</div>
-            <div class="port-card-location">studioabuchain.com</div>
-          </div>
-          <span class="port-card-arrow">↗</span>
+
+      </div>
+      <div class="sobre-right">
+        <p class="sobre-body reveal" data-i18n-html="about.body">
+          O <strong>Black Dog Studio</strong> é um estúdio de web design focado em criar experiências digitais
+          memoráveis.
+          Combinamos estratégia, design e tecnologia para entregar soluções que transformam a presença online dos nossos
+          clientes e geram resultados reais.<br><br>Acreditamos que um bom design vai além da estética — ele comunica,
+          converte e diferencia. Cada projeto é tratado de forma única, com atenção aos detalhes e foco no que realmente
+          importa: o seu negócio.
+        </p>
+        <blockquote class="sobre-manifesto reveal reveal-delay-1" data-i18n="about.quote">
+          "Design não é como uma coisa parece, é como ela funciona."
+        </blockquote>
+        <div class="sobre-tags reveal reveal-delay-2">
+          <span class="sobre-tag">Web Design</span>
+          <span class="sobre-tag">UI/UX</span>
+          <span class="sobre-tag">Branding</span>
+          <span class="sobre-tag">E-commerce</span>
+          <span class="sobre-tag" data-i18n="tag.responsive">Design Responsivo</span>
+          <span class="sobre-tag" data-i18n="tag.maintenance">Manutenção</span>
+          <span class="sobre-tag" data-i18n="tag.worldwide">Global</span>
         </div>
-      </a>
-      <!-- CARD 02 — Brenda Cardim (REAL) -->
-      <a class="port-card port-card-real reveal reveal-delay-1" data-category="site"
-        href="https://www.brendacardim.com/" target="_blank" rel="noopener" style="text-decoration:none;display:block;">
-        <div class="port-img-wrap">
-          <span class="port-img-num mono">02</span>
-          <img class="port-preview-img" src="brenda-preview.jpg" alt="Brenda Cardim" loading="lazy" decoding="async"
-            onerror="this.style.display='none'">
-          <div class="port-img-placeholder mono"
-            style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:1;background:#0C0C0A">
-            <span style="font-size:16px;font-weight:500;color:#F5F1E8;font-family:var(--font-sans)">Brenda Cardim</span>
-            <span style="font-size:12px;color:#8C8A82;font-family:var(--font-mono)">Psicóloga · Site
-              Institucional</span>
-          </div>
+      </div>
+    </section>
+
+    <!-- PORTFÓLIO -->
+    <section id="portfolio">
+      <div class="portfolio-header">
+        <div>
+          <div class="portfolio-section-num mono reveal" data-i18n="portfolio.sectionNum">03 — Trabalhos</div>
+          <h2 class="portfolio-title reveal reveal-delay-1" data-i18n="portfolio.title">Projetos</h2>
         </div>
-        <div class="port-card-info">
-          <div>
-            <div class="port-card-name">Brenda Cardim</div>
-            <div class="port-card-cat">Psicologia · Site Institucional</div>
-            <div class="port-card-location">brendacardim.com</div>
-          </div>
-          <span class="port-card-arrow">↗</span>
-        </div>
-      </a>
-      <!-- CARD 03 — Versa Arquitetura -->
-      <div class="port-card port-card-real reveal reveal-delay-2" data-category="site">
-        <div class="port-img-wrap">
-          <span class="port-img-num mono">03</span>
-          <div class="port-img-placeholder mono"
-            style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:1;background:#0C0C0A;background:var(--card-placeholder,#0C0C0A)">
-            <span style="font-size:16px;font-weight:500;color:#F5F1E8;font-family:var(--font-sans)">Versa
-              Arquitetura</span>
-            <span style="font-size:12px;color:#8C8A82;font-family:var(--font-mono)">Arquitetura · São Paulo</span>
-          </div>
-        </div>
-        <div class="port-card-info">
-          <div>
-            <div class="port-card-name">Versa Arquitetura</div>
-            <div class="port-card-cat">Arquitetura · Site Institucional</div>
-            <div class="port-card-location">versaarquitetura.com.br</div>
-          </div>
-          <span class="port-card-arrow">↗</span>
+        <div class="portfolio-filters reveal reveal-delay-2">
+          <button class="filter-btn active" data-filter="all" data-i18n="filter.all">Todos</button>
+          <button class="filter-btn" data-filter="site" data-i18n="filter.sites">Sites</button>
+          <button class="filter-btn" data-filter="branding" data-i18n="filter.branding">Branding</button>
+          <button class="filter-btn" data-filter="uiux">UI/UX</button>
+          <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
         </div>
       </div>
 
-      <!-- CARD 04 — Lumen Estética -->
-      <div class="port-card port-card-real reveal reveal-delay-3" data-category="ecommerce">
-        <div class="port-img-wrap">
-          <span class="port-img-num mono">04</span>
-          <div class="port-img-placeholder mono"
-            style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:1;background:#0C0C0A;background:var(--card-placeholder,#0C0C0A)">
-            <span style="font-size:16px;font-weight:500;color:#F5F1E8;font-family:var(--font-sans)">Lumen
-              Estética</span>
-            <span style="font-size:12px;color:#8C8A82;font-family:var(--font-mono)">E-commerce · Recife</span>
+      <div class="portfolio-list" id="portfolio-grid">
+
+        <a class="port-item reveal" data-category="site" href="https://www.studioabuchain.com/" target="_blank"
+          rel="noopener">
+          <span class="port-item-num">01</span>
+          <div class="port-item-thumb pi-c1"><span class="port-item-initials">SA</span></div>
+          <div class="port-item-body">
+            <div class="port-item-name">Studio Abuchain</div>
+            <div class="port-item-meta">
+              <span class="port-item-cat">Site</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-loc">Milão, Itália</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-url">studioabuchain.com</span>
+            </div>
+          </div>
+          <div class="port-item-right">
+            <span class="port-item-year">2025</span>
+            <span class="port-item-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="port-item reveal reveal-delay-1" data-category="site" href="https://www.brendacardim.com/"
+          target="_blank" rel="noopener">
+          <span class="port-item-num">02</span>
+          <div class="port-item-thumb pi-c2"><span class="port-item-initials">BC</span></div>
+          <div class="port-item-body">
+            <div class="port-item-name">Brenda Cardim</div>
+            <div class="port-item-meta">
+              <span class="port-item-cat">Site</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-loc">Brasil</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-url">brendacardim.com</span>
+            </div>
+          </div>
+          <div class="port-item-right">
+            <span class="port-item-year">2025</span>
+            <span class="port-item-arrow">↗</span>
+          </div>
+        </a>
+
+        <div class="port-item reveal reveal-delay-2" data-category="site">
+          <span class="port-item-num">03</span>
+          <div class="port-item-thumb pi-c3"><span class="port-item-initials">VA</span></div>
+          <div class="port-item-body">
+            <div class="port-item-name">Versa Arquitetura</div>
+            <div class="port-item-meta">
+              <span class="port-item-cat">Site</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-loc">São Paulo, Brasil</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-url">versaarquitetura.com.br</span>
+            </div>
+          </div>
+          <div class="port-item-right">
+            <span class="port-item-year">2024</span>
+            <span class="port-item-arrow">↗</span>
           </div>
         </div>
-        <div class="port-card-info">
-          <div>
-            <div class="port-card-name">Lumen Estética</div>
-            <div class="port-card-cat">E-commerce · Agendamento Online</div>
-            <div class="port-card-location">lumenstetica.com.br</div>
+
+        <div class="port-item reveal reveal-delay-3" data-category="ecommerce">
+          <span class="port-item-num">04</span>
+          <div class="port-item-thumb pi-c4"><span class="port-item-initials">LE</span></div>
+          <div class="port-item-body">
+            <div class="port-item-name">Lumen Estética</div>
+            <div class="port-item-meta">
+              <span class="port-item-cat">E-commerce</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-loc">Recife, Brasil</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-url">lumenstetica.com.br</span>
+            </div>
           </div>
-          <span class="port-card-arrow">↗</span>
+          <div class="port-item-right">
+            <span class="port-item-year">2024</span>
+            <span class="port-item-arrow">↗</span>
+          </div>
         </div>
+
+
+
       </div>
 
-      <!-- CARD 05 — Rawfield Co. -->
-      <div class="port-card port-card-real reveal" data-category="branding">
-        <div class="port-img-wrap">
-          <span class="port-img-num mono">05</span>
-          <div class="port-img-placeholder mono"
-            style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:1;background:#0C0C0A;background:var(--card-placeholder,#0C0C0A)">
-            <span style="font-size:16px;font-weight:500;color:#F5F1E8;font-family:var(--font-sans)">Rawfield Co.</span>
-            <span style="font-size:12px;color:#8C8A82;font-family:var(--font-mono)">Branding · Miami, USA</span>
-          </div>
-        </div>
-        <div class="port-card-info">
-          <div>
-            <div class="port-card-name">Rawfield Co.</div>
-            <div class="port-card-cat" data-i18n="cat.rawfield">Branding Digital · Landing Page</div>
-            <div class="port-card-location">rawfieldco.com</div>
-          </div>
-          <span class="port-card-arrow">↗</span>
-        </div>
+      <div class="portfolio-footer">
+        <button class="btn-secondary" data-i18n="nav.cta" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Iniciar Projeto</button>
       </div>
+    </section>
 
-      <!-- CARD 06 — Dr. Henrique Melo -->
-      <div class="port-card port-card-real reveal reveal-delay-1" data-category="site">
-        <div class="port-img-wrap">
-          <span class="port-img-num mono">06</span>
-          <div class="port-img-placeholder mono"
-            style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:1;background:#0C0C0A;background:var(--card-placeholder,#0C0C0A)">
-            <span style="font-size:16px;font-weight:500;color:#F5F1E8;font-family:var(--font-sans)">Dr. Henrique
-              Melo</span>
-            <span style="font-size:12px;color:#8C8A82;font-family:var(--font-mono)">Medicina · Recife</span>
-          </div>
+    <!-- SERVIÇOS -->
+    <section id="servicos">
+      <div class="services-header">
+        <div>
+          <div class="mono reveal" style="margin-bottom:8px" data-i18n="services.sectionNum">04 — Serviços</div>
+          <h2 class="services-title reveal reveal-delay-1" data-i18n="services.title">O que fazemos</h2>
         </div>
-        <div class="port-card-info">
-          <div>
-            <div class="port-card-name">Dr. Henrique Melo</div>
-            <div class="port-card-cat">Medicina · Site Institucional</div>
-            <div class="port-card-location">drhenriquemelo.com.br</div>
-          </div>
-          <span class="port-card-arrow">↗</span>
-        </div>
+        <p class="services-subtitle reveal reveal-delay-2" data-i18n="services.subtitle">
+          Soluções digitais completas para elevar sua presença online e impulsionar resultados.
+        </p>
       </div>
+      <div class="services-grid">
 
-      <!-- CARD 07 — Kinetic Labs -->
-      <div class="port-card port-card-real reveal reveal-delay-2" data-category="uiux">
-        <div class="port-img-wrap">
-          <span class="port-img-num mono">07</span>
-          <div class="port-img-placeholder mono"
-            style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:1;background:#0C0C0A;background:var(--card-placeholder,#0C0C0A)">
-            <span style="font-size:16px;font-weight:500;color:#F5F1E8;font-family:var(--font-sans)">Kinetic Labs</span>
-            <span style="font-size:12px;color:#8C8A82;font-family:var(--font-mono)">UI/UX · Lisboa, Portugal</span>
+        <!-- 01 -->
+        <div class="svc-card svc-featured reveal">
+          <div class="svc-featured-badge" data-i18n="svc.featured">Mais procurado</div>
+          <div class="svc-num">01</div>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <path d="M8 21h8M12 17v4" />
+          </svg>
+          <div class="svc-name" data-i18n="svc1.name">Criação de Sites</div>
+          <div class="svc-desc" data-i18n="svc1.desc">Sites responsivos, modernos e otimizados para conversão — foco em
+            experiência do usuário e performance.</div>
+          <div class="svc-tags">
+            <span class="svc-tag">HTML/CSS</span>
+            <span class="svc-tag" data-i18n="tag.responsive">Responsivo</span>
+            <span class="svc-tag">SEO</span>
           </div>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
         </div>
-        <div class="port-card-info">
-          <div>
-            <div class="port-card-name">Kinetic Labs</div>
-            <div class="port-card-cat">UI/UX Design · SaaS Dashboard</div>
-            <div class="port-card-location">kineticlabs.io</div>
-          </div>
-          <span class="port-card-arrow">↗</span>
-        </div>
-      </div>
 
-      <!-- CARD 08 — Maré Surf House -->
-      <div class="port-card port-card-real reveal reveal-delay-3" data-category="ecommerce">
-        <div class="port-img-wrap">
-          <span class="port-img-num mono">08</span>
-          <div class="port-img-placeholder mono"
-            style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:1;background:#0C0C0A;background:var(--card-placeholder,#0C0C0A)">
-            <span style="font-size:16px;font-weight:500;color:#F5F1E8;font-family:var(--font-sans)">Maré Surf
-              House</span>
-            <span style="font-size:12px;color:#8C8A82;font-family:var(--font-mono)">E-commerce · Fortaleza</span>
+        <!-- 02 -->
+        <div class="svc-card reveal reveal-delay-1">
+          <div class="svc-num">02</div>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round">
+            <circle cx="12" cy="12" r="3" />
+            <path d="M3 12h1M20 12h1M12 3v1M12 20v1M5.6 5.6l.7.7M17.7 17.7l.7.7M5.6 18.4l.7-.7M17.7 6.3l.7-.7" />
+          </svg>
+          <div class="svc-name" data-i18n="svc2.name">UI/UX Design</div>
+          <div class="svc-desc" data-i18n="svc2.desc">Interfaces intuitivas e atraentes que proporcionam uma experiência
+            memorável ao usuário.</div>
+          <div class="svc-tags">
+            <span class="svc-tag">Figma</span>
+            <span class="svc-tag" data-i18n="tag.prototype">Prototipação</span>
+            <span class="svc-tag" data-i18n="tag.usability">Usabilidade</span>
           </div>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
         </div>
-        <div class="port-card-info">
-          <div>
-            <div class="port-card-name">Maré Surf House</div>
-            <div class="port-card-cat">E-commerce · Lifestyle</div>
-            <div class="port-card-location">maresurfhouse.com</div>
-          </div>
-          <span class="port-card-arrow">↗</span>
-        </div>
-      </div>
 
-    </div>
-    <div class="portfolio-footer">
-      <button class="btn-secondary" data-i18n="portfolio.viewAll">Ver Todos os Projetos →</button>
-    </div>
-  </section>
+        <!-- 03 -->
+        <div class="svc-card reveal reveal-delay-2">
+          <div class="svc-num">03</div>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          <div class="svc-name" data-i18n="svc3.name">Branding Digital</div>
+          <div class="svc-desc" data-i18n="svc3.desc">Identidades visuais que comunicam a essência da sua marca e se
+            destacam no ambiente digital.</div>
+          <div class="svc-tags">
+            <span class="svc-tag">Logo</span>
+            <span class="svc-tag" data-i18n="tag.identity">Identidade</span>
+            <span class="svc-tag">Brand Guide</span>
+          </div>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
+        </div>
 
-  <!-- SERVIÇOS -->
-  <section id="servicos">
-    <div class="services-header">
-      <div>
-        <div class="mono reveal" style="margin-bottom:8px" data-i18n="services.sectionNum">04 — Serviços</div>
-        <h2 class="services-title reveal reveal-delay-1" data-i18n="services.title">Serviços</h2>
-      </div>
-      <p class="services-subtitle reveal reveal-delay-2" data-i18n="services.subtitle">
-        Soluções digitais completas para transformar sua presença online e impulsionar seu negócio.
-      </p>
-    </div>
-    <div class="services-grid bento-grid">
-      <div class="svc-card reveal">
-        <div class="svc-num">01</div>
-        <div class="svc-name" data-i18n="svc1.name">Criação de Sites</div>
-        <div class="svc-desc" data-i18n="svc1.desc">Desenvolvemos sites responsivos, modernos e otimizados para
-          conversão, com foco em experiência do usuário e performance.</div>
-        <span class="svc-link" data-i18n="svc.more">Saiba mais →</span>
-      </div>
-      <div class="svc-card reveal reveal-delay-1">
-        <div class="svc-num">02</div>
-        <div class="svc-name" data-i18n="svc2.name">UI/UX Design</div>
-        <div class="svc-desc" data-i18n="svc2.desc">Criamos interfaces intuitivas e atraentes que proporcionam uma
-          experiência de usuário excepcional e memorável.</div>
-        <span class="svc-link" data-i18n="svc.more">Saiba mais →</span>
-      </div>
-      <div class="svc-card reveal reveal-delay-2">
-        <div class="svc-num">03</div>
-        <div class="svc-name" data-i18n="svc3.name">Branding Digital</div>
-        <div class="svc-desc" data-i18n="svc3.desc">Desenvolvemos identidades visuais que comunicam a essência da sua
-          marca e se destacam no ambiente digital.</div>
-        <span class="svc-link" data-i18n="svc.more">Saiba mais →</span>
-      </div>
-      <div class="svc-card reveal reveal-delay-1">
-        <div class="svc-num">04</div>
-        <div class="svc-name" data-i18n="svc4.name">Design Responsivo</div>
-        <div class="svc-desc" data-i18n="svc4.desc">Garantimos que seu site funcione perfeitamente em todos os
-          dispositivos, de smartphones a desktops.</div>
-        <span class="svc-link" data-i18n="svc.more">Saiba mais →</span>
-      </div>
-      <div class="svc-card reveal reveal-delay-2">
-        <div class="svc-num">05</div>
-        <div class="svc-name">E-commerce</div>
-        <div class="svc-desc" data-i18n="svc5.desc">Criamos lojas virtuais atraentes e funcionais que convertem
-          visitantes em clientes e aumentam suas vendas.</div>
-        <span class="svc-link" data-i18n="svc.more">Saiba mais →</span>
-      </div>
-      <div class="svc-card reveal reveal-delay-3">
-        <div class="svc-num">06</div>
-        <div class="svc-name" data-i18n="svc6.name">Manutenção</div>
-        <div class="svc-desc" data-i18n="svc6.desc">Oferecemos suporte contínuo para manter seu site sempre atualizado,
-          seguro e funcionando perfeitamente.</div>
-        <span class="svc-link" data-i18n="svc.more">Saiba mais →</span>
-      </div>
-    </div>
-  </section>
+        <!-- 04 -->
+        <div class="svc-card reveal">
+          <div class="svc-num">04</div>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" />
+            <path d="M12 18h.01" />
+          </svg>
+          <div class="svc-name" data-i18n="svc4.name">Design Responsivo</div>
+          <div class="svc-desc" data-i18n="svc4.desc">Seu site funcionando perfeitamente em todos os dispositivos — de
+            smartphones a monitores ultrawide.</div>
+          <div class="svc-tags">
+            <span class="svc-tag">Mobile First</span>
+            <span class="svc-tag">Cross-browser</span>
+          </div>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
+        </div>
 
-  <!-- CONTATO -->
-  <section id="contato">
-    <div class="contact-left">
-      <div class="contact-section-label reveal" data-i18n="contact.label">— Contato</div>
-      <h2 class="contact-title reveal reveal-delay-1" data-i18n-html="contact.title">Vamos trabalhar<br>juntos.</h2>
-      <p class="contact-sub reveal reveal-delay-2" data-i18n="contact.sub">
-        Tem um projeto em mente? Entre em contato e vamos transformar sua ideia em realidade digital.
-      </p>
-      <div class="contact-info reveal reveal-delay-3">
-        <div class="cinfo-item">
-          <div class="cinfo-dot"></div>
-          <div>
-            <div class="cinfo-label">Email</div><a href="mailto:blckdogbrasil@gmail.com" class="cinfo-val"
-              style="text-decoration:none;cursor:none;">blckdogbrasil@gmail.com</a>
+        <!-- 05 -->
+        <div class="svc-card reveal reveal-delay-1">
+          <div class="svc-num">05</div>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <path d="M3 6h18" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+          <div class="svc-name">E-commerce</div>
+          <div class="svc-desc" data-i18n="svc5.desc">Lojas virtuais funcionais que convertem visitantes em clientes e
+            aumentam suas vendas.</div>
+          <div class="svc-tags">
+            <span class="svc-tag">WooCommerce</span>
+            <span class="svc-tag" data-i18n="tag.payments">Pagamentos</span>
+            <span class="svc-tag" data-i18n="tag.catalog">Catálogo</span>
           </div>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
         </div>
-        <div class="cinfo-item">
-          <div class="cinfo-dot"></div>
-          <div>
-            <div class="cinfo-label">WhatsApp</div><a href="https://wa.me/5581998920712" target="_blank" rel="noopener"
-              class="cinfo-val" style="text-decoration:none;cursor:none;">+55 (81) 99892-0712</a>
+
+        <!-- 06 -->
+        <div class="svc-card reveal reveal-delay-2">
+          <div class="svc-num">06</div>
+          <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <div class="svc-name" data-i18n="svc6.name">Manutenção</div>
+          <div class="svc-desc" data-i18n="svc6.desc">Suporte contínuo para manter seu site atualizado, seguro e
+            funcionando perfeitamente.</div>
+          <div class="svc-tags">
+            <span class="svc-tag">Updates</span>
+            <span class="svc-tag" data-i18n="tag.security">Segurança</span>
+            <span class="svc-tag">Backup</span>
           </div>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
         </div>
-        <div class="cinfo-item">
-          <div class="cinfo-dot"></div>
-          <div>
-            <div class="cinfo-label" data-i18n="contact.locationLabel">Localização</div>
-            <div class="cinfo-val" id="live-widget">Recife, PE — Brasil 🌐</div>
+
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="contact-left">
+        <div class="contact-section-label reveal" data-i18n="contact.label">— Contato</div>
+        <h2 class="contact-title reveal reveal-delay-1" data-i18n-html="contact.title">Vamos trabalhar<br>juntos.</h2>
+        <p class="contact-sub reveal reveal-delay-2" data-i18n="contact.sub">
+          Tem um projeto em mente? Entre em contato e vamos transformar sua ideia em realidade digital.
+        </p>
+        <div class="contact-info reveal reveal-delay-3">
+          <div class="cinfo-item">
+            <div class="cinfo-dot"></div>
+            <div>
+              <div class="cinfo-label">Email</div><a href="mailto:blckdogbrasil@gmail.com" class="cinfo-val"
+                style="text-decoration:none;cursor:none;">blckdogbrasil@gmail.com</a>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-dot"></div>
+            <div>
+              <div class="cinfo-label">WhatsApp</div><a href="https://wa.me/5581998920712" target="_blank"
+                rel="noopener" class="cinfo-val" style="text-decoration:none;cursor:none;">+55 (81) 99892-0712</a>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-dot"></div>
+            <div>
+              <div class="cinfo-label" data-i18n="contact.locationLabel">Localização</div>
+              <div class="cinfo-val" id="live-widget">Recife, PE — Brasil 🌐</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="contact-right reveal">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" data-i18n="form.name">Nome</label>
-          <input class="form-input" type="text" id="f-nome" data-i18n-placeholder="form.namePh">
+      <div class="contact-right reveal">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="form.name">Nome</label>
+            <input class="form-input" type="text" id="f-nome" data-i18n-placeholder="form.namePh">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" id="f-email" placeholder="seu@email.com">
+          </div>
         </div>
         <div class="form-group">
-          <label class="form-label">Email</label>
-          <input class="form-input" type="email" id="f-email" placeholder="seu@email.com">
+          <label class="form-label" data-i18n="form.phone">Telefone / WhatsApp</label>
+          <input class="form-input" type="tel" id="f-tel" placeholder="+55 (xx) xxxxx-xxxx">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-servico" data-i18n="form.service">Serviço de Interesse</label>
+          <select class="form-input" id="f-servico" style="cursor:none">
+            <option value="" disabled selected data-i18n="form.servicePh">Selecione um serviço</option>
+            <option data-i18n="svc1.name">Criação de Site</option>
+            <option data-i18n="svc2.name">UI/UX Design</option>
+            <option data-i18n="svc3.name">Branding Digital</option>
+            <option data-i18n="svc4.name">Design Responsivo</option>
+            <option>E-commerce</option>
+            <option data-i18n="svc6.name">Manutenção</option>
+            <option data-i18n="form.other">Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.message">Mensagem</label>
+          <textarea class="form-textarea" id="f-msg" data-i18n-placeholder="form.messagePh"></textarea>
+        </div>
+        <div class="form-submit">
+          <button class="btn-primary" id="submit-btn" data-i18n="form.submit" onclick="handleSubmit()">Enviar
+            Mensagem</button>
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label" data-i18n="form.phone">Telefone / WhatsApp</label>
-        <input class="form-input" type="tel" id="f-tel" placeholder="+55 (xx) xxxxx-xxxx">
-      </div>
-      <div class="form-group">
-        <label class="form-label" data-i18n="form.service">Serviço de Interesse</label>
-        <select class="form-input" id="f-servico" style="cursor:none">
-          <option value="" disabled selected data-i18n="form.servicePh">Selecione um serviço</option>
-          <option data-i18n="svc1.name">Criação de Site</option>
-          <option data-i18n="svc2.name">UI/UX Design</option>
-          <option data-i18n="svc3.name">Branding Digital</option>
-          <option data-i18n="svc4.name">Design Responsivo</option>
-          <option>E-commerce</option>
-          <option data-i18n="svc6.name">Manutenção</option>
-          <option data-i18n="form.other">Outro</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label" data-i18n="form.message">Mensagem</label>
-        <textarea class="form-textarea" id="f-msg" data-i18n-placeholder="form.messagePh"></textarea>
-      </div>
-      <div class="form-submit">
-        <button class="btn-primary" id="submit-btn" data-i18n="form.submit" onclick="handleSubmit()">Enviar
-          Mensagem</button>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer id="footer">
     <a href="#hero" class="footer-logo" aria-label="Black Dog Studio">
-      <img src="assets/img/logo.png" alt="Black Dog Studio" class="footer-logo-img">
+      <img src="assets/img/logo.webp" alt="Black Dog Studio" class="footer-logo-img" width="144" height="36"
+        loading="lazy">
     </a>
     <ul class="footer-links">
       <li><a href="#portfolio" data-i18n="nav.work">Trabalhos</a></li>
@@ -597,13 +605,13 @@
 
   <div id="toast"></div>
 
-  <!-- Script de proteção de email (pode manter) -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <!-- Script de proteção de email 404 (comentado temporariamente) -->
+  <!-- <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> -->
 
   <!-- CHAMADA DOS SEUS ARQUIVOS ORGANIZADOS (O PULO DO GATO) -->
   <script src="js/i18n.js"></script>
-  <script src="js/three-scene.js"></script>
-  <script src="js/main.js"></script>
+  <script defer src="js/three-scene.js"></script>
+  <script defer src="js/main.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
-(function initThree() {
+window.addEventListener('load', () => {
+  setTimeout(function initThree() {
     const canvas = document.getElementById('hero-canvas');
     if (!canvas || typeof THREE === 'undefined') return;
 
@@ -6,8 +7,9 @@
     const W = () => wrap.clientWidth;
     const H = () => wrap.clientHeight;
 
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Desliga antialias e diminui o pixel ratio para desafogar a GPU/CPU em monitores grandes
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+    renderer.setPixelRatio(1);
     renderer.setSize(W(), H());
     renderer.setClearColor(0x000000, 0);
 
@@ -69,4 +71,5 @@
         camera.updateProjectionMatrix();
         renderer.setSize(W(), H());
     }, { passive: true });
-})();
+  }, 200); // Atraso de 200ms após o load
+});
