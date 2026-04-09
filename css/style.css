@@ -49,12 +49,15 @@
   box-shadow: 0 10px 40px rgba(0,0,0,0.1);
 }
 
-[data-theme="light"] #gl-overlay { background: rgba(245, 241, 232, 0.5); }
+[data-theme="light"] #gl-overlay { background: rgba(245, 241, 232, 0.4); }
 [data-theme="light"] .gl-modal, [data-theme="light"] .gl-close-btn { 
-  background: rgba(245, 241, 232, 0.75); 
-  border-color: rgba(10, 10, 8, 0.1); 
+  background: rgba(255, 255, 255, 0.5); 
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7); 
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
 }
-[data-theme="light"] .gl-footer { border-top-color: rgba(10, 10, 8, 0.1); }
+[data-theme="light"] .gl-footer { border-top-color: rgba(10, 10, 8, 0.05); }
 [data-theme="light"] .gl-btn-quote { 
   background: rgba(0,0,0,0.05); 
   border-color: rgba(10, 10, 8, 0.1);
@@ -312,7 +315,8 @@ a {
 }
 
 #nav.scrolled {
-  transform: translateY(calc(100vh - 90px));
+  transform: translateY(calc(100vh - 90px)); /* fallback */
+  transform: translateY(calc(100dvh - 90px - env(safe-area-inset-bottom, 0px)));
   max-width: 130px;
   border-radius: 40px;
   border-color: rgba(255, 255, 255, 0.1);
@@ -407,10 +411,10 @@ a {
 .gl-modal {
   width: 90%;
   max-width: 380px;
-  background: rgba(20, 20, 18, 0.65);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(30, 30, 28, 0.5);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 4px; /* Slightly sharp like the photo */
   padding: 40px;
   display: flex;
