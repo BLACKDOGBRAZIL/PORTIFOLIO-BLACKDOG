@@ -1,0 +1,26 @@
+{
+  "name": "portifolio-blackdog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BLACKDOGBRAZIL/PORTIFOLIO-BLACKDOG.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/BLACKDOGBRAZIL/PORTIFOLIO-BLACKDOG/issues"
+  },
+  "homepage": "https://github.com/BLACKDOGBRAZIL/PORTIFOLIO-BLACKDOG#readme",
+  "devDependencies": {
+    "vite": "^8.0.10"
+  }
+}
