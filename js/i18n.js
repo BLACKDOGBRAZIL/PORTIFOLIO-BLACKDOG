@@ -315,5 +315,10 @@ function setLang(lang) {
     applyLang(lang);
 }
 
+// Expose functions to global scope for HTML onclick handlers
+window.setLang = setLang;
+window.t = t;
+window.currentLang = currentLang;
+
 // Inicializa a tradução sincronicamente no fim do carregamento do documento
 applyLang(currentLang);

@@ -176,6 +176,7 @@ function handleSubmit() {
     document.getElementById('f-servico').selectedIndex = 0;
     setTimeout(() => { btn.disabled = false; btn.style.opacity = ''; }, 3000);
 }
+window.handleSubmit = handleSubmit;
 
 /* ── HAMBURGER MENU ── */
 const hamburgers = document.querySelectorAll('.nav-hamburger');
