@@ -46,23 +46,35 @@
   background: rgba(245, 241, 232, 0.85);
   border-color: rgba(10, 10, 8, 0.1);
   border-bottom-color: rgba(10, 10, 8, 0.1);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="light"] #gl-overlay { background: rgba(245, 241, 232, 0.4); }
-[data-theme="light"] .gl-modal, [data-theme="light"] .gl-close-btn { 
-  background: rgba(255, 255, 255, 0.5); 
+[data-theme="light"] #gl-overlay {
+  background: rgba(245, 241, 232, 0.4);
+}
+
+[data-theme="light"] .gl-modal,
+[data-theme="light"] .gl-close-btn {
+  background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.7); 
+  border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
 }
-[data-theme="light"] .gl-footer { border-top-color: rgba(10, 10, 8, 0.05); }
-[data-theme="light"] .gl-btn-quote { 
-  background: rgba(0,0,0,0.05); 
+
+[data-theme="light"] .gl-footer {
+  border-top-color: rgba(10, 10, 8, 0.05);
+}
+
+[data-theme="light"] .gl-btn-quote {
+  background: rgba(0, 0, 0, 0.05);
   border-color: rgba(10, 10, 8, 0.1);
 }
-[data-theme="light"] .gl-btn-quote:hover { background: var(--text-1); color: var(--bg); }
+
+[data-theme="light"] .gl-btn-quote:hover {
+  background: var(--text-1);
+  color: var(--bg);
+}
 
 [data-theme="light"] #bg-glow {
   background: radial-gradient(circle at center, rgba(10, 92, 70, 0.22) 0%, rgba(15, 110, 86, 0.10) 35%, rgba(29, 158, 117, 0.04) 60%, transparent 75%);
@@ -307,21 +319,22 @@ a {
   border: 1px solid transparent;
   border-bottom: .5px solid var(--border);
   border-radius: 0;
-  transition: max-width 0.5s cubic-bezier(0.22, 1, 0.36, 1), 
-              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), 
-              border-radius 0.5s ease, 
-              background 0.3s ease, 
-              border-color 0.3s ease;
+  transition: max-width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 0.5s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
 }
 
 #nav.scrolled {
-  transform: translateY(calc(100vh - 90px)); /* fallback */
+  transform: translateY(calc(100vh - 90px));
+  /* fallback */
   transform: translateY(calc(100dvh - 90px - env(safe-area-inset-bottom, 0px)));
   max-width: 130px;
   border-radius: 40px;
   border-color: rgba(255, 255, 255, 0.1);
   background: rgba(10, 10, 8, 0.7);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -415,11 +428,12 @@ a {
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 4px; /* Slightly sharp like the photo */
+  border-radius: 4px;
+  /* Slightly sharp like the photo */
   padding: 40px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
   transform: translateY(20px) scale(0.95);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -487,13 +501,15 @@ a {
   transition: color 0.2s;
 }
 
-.gl-col a:hover { color: var(--accent-l); }
+.gl-col a:hover {
+  color: var(--accent-l);
+}
 
 .gl-btn-quote {
   width: 100%;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   color: var(--text-1);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 16px;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -530,7 +546,7 @@ a {
 }
 
 .gl-close-btn:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   transform: scale(1.05);
 }
 
@@ -3392,18 +3408,19 @@ html:not([data-theme="light"]) {
 
 /* ── ULTRAWIDE LAYOUT ALIGNMENT (> 1300px) ── */
 @media (min-width: 1300px) {
+
   /* Alinha a margem esquerda do conteúdo das seções perfeitamente com a Navbar de 1280px */
-  .hero-left, 
-  .sobre-left, 
-  .portfolio-header, 
-  .services-header, 
+  .hero-left,
+  .sobre-left,
+  .portfolio-header,
+  .services-header,
   .contact-left {
     padding-left: calc((100vw - 1280px) / 2 + 32px) !important;
   }
 
   /* Right-side alignment */
-  .hero-right, 
-  .sobre-right, 
+  .hero-right,
+  .sobre-right,
   .contact-right {
     padding-right: calc((100vw - 1280px) / 2 + 32px) !important;
   }
@@ -3412,6 +3429,7 @@ html:not([data-theme="light"]) {
   #stats .stat-item:first-child {
     padding-left: calc((100vw - 1280px) / 2 + 32px) !important;
   }
+
   #stats .stat-item:last-child {
     padding-right: calc((100vw - 1280px) / 2 + 32px) !important;
   }
@@ -3424,7 +3442,7 @@ html:not([data-theme="light"]) {
   .services-grid {
     padding-right: calc((100vw - 1280px) / 2 + 32px) !important;
   }
-  
+
   .port-item,
   .portfolio-footer,
   .services-grid {

@@ -21,9 +21,9 @@ window.addEventListener('load', () => {
     const posArr = new Float32Array(count * 3);
     const spread = 7;
     for (let i = 0; i < count; i++) {
-        posArr[i * 3] = (Math.random() - 0.5) * spread;
-        posArr[i * 3 + 1] = (Math.random() - 0.5) * spread;
-        posArr[i * 3 + 2] = (Math.random() - 0.5) * spread;
+      posArr[i * 3] = (Math.random() - 0.5) * spread;
+      posArr[i * 3 + 1] = (Math.random() - 0.5) * spread;
+      posArr[i * 3 + 2] = (Math.random() - 0.5) * spread;
     }
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(posArr, 3));
@@ -44,32 +44,32 @@ window.addEventListener('load', () => {
 
     let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
     wrap.addEventListener('mousemove', e => {
-        const r = wrap.getBoundingClientRect();
-        targetX = ((e.clientX - r.left) / r.width - 0.5) * 1.2;
-        targetY = ((e.clientY - r.top) / r.height - 0.5) * 1.2;
+      const r = wrap.getBoundingClientRect();
+      targetX = ((e.clientX - r.left) / r.width - 0.5) * 1.2;
+      targetY = ((e.clientY - r.top) / r.height - 0.5) * 1.2;
     }, { passive: true });
     wrap.addEventListener('mouseleave', () => { targetX = 0; targetY = 0; });
 
     let t = 0;
     function animate3d() {
-        requestAnimationFrame(animate3d);
-        t += 0.004;
-        currentX += (targetX - currentX) * 0.06;
-        currentY += (targetY - currentY) * 0.06;
-        torus.rotation.x = t * 0.4 + currentY * 0.8;
-        torus.rotation.y = t * 0.6 + currentX * 0.8;
-        ring3d.rotation.z = t * 0.2;
-        ring3d.rotation.y = t * 0.15 + currentX * 0.4;
-        particles.rotation.y = t * 0.05 + currentX * 0.1;
-        particles.rotation.x = currentY * 0.08;
-        renderer.render(scene, camera);
+      requestAnimationFrame(animate3d);
+      t += 0.004;
+      currentX += (targetX - currentX) * 0.06;
+      currentY += (targetY - currentY) * 0.06;
+      torus.rotation.x = t * 0.4 + currentY * 0.8;
+      torus.rotation.y = t * 0.6 + currentX * 0.8;
+      ring3d.rotation.z = t * 0.2;
+      ring3d.rotation.y = t * 0.15 + currentX * 0.4;
+      particles.rotation.y = t * 0.05 + currentX * 0.1;
+      particles.rotation.x = currentY * 0.08;
+      renderer.render(scene, camera);
     }
     animate3d();
 
     window.addEventListener('resize', () => {
-        camera.aspect = W() / H();
-        camera.updateProjectionMatrix();
-        renderer.setSize(W(), H());
+      camera.aspect = W() / H();
+      camera.updateProjectionMatrix();
+      renderer.setSize(W(), H());
     }, { passive: true });
   }, 200); // Atraso de 200ms após o load
 });

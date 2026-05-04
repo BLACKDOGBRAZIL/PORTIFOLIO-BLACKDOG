@@ -43,6 +43,8 @@ const translations = {
         /* CATEGORIES */
         'cat.site': 'Criação de Site',
         'cat.branding': 'Branding Digital',
+        'cat.ecommerce': 'E-commerce',
+        'cat.uiux': 'UI/UX Design',
         /* SERVICES */
         'services.sectionNum': '04 — Serviços',
         'services.title': 'Serviços',
@@ -96,6 +98,13 @@ const translations = {
         'tag.payments': 'Pagamentos',
         'tag.catalog': 'Catálogo',
         'tag.security': 'Segurança',
+        /* LOCATIONS */
+        'loc.milan': 'Milão, Itália',
+        'loc.brasil': 'Brasil',
+        'loc.pe': 'Pernambuco, Brasil',
+        'loc.bsb': 'Brasília, Brasil',
+        'loc.sp': 'São Paulo, Brasil',
+        'loc.recife': 'Recife, Brasil',
     },
     en: {
         /* NAV */
@@ -141,6 +150,8 @@ const translations = {
         /* CATEGORIES */
         'cat.site': 'Website Design',
         'cat.branding': 'Digital Branding',
+        'cat.ecommerce': 'E-commerce',
+        'cat.uiux': 'UI/UX Design',
         /* SERVICES */
         'services.sectionNum': '04 — Services',
         'services.title': 'Services',
@@ -194,6 +205,13 @@ const translations = {
         'tag.payments': 'Payments',
         'tag.catalog': 'Catalog',
         'tag.security': 'Security',
+        /* LOCATIONS */
+        'loc.milan': 'Milan, Italy',
+        'loc.brasil': 'Brazil',
+        'loc.pe': 'Pernambuco, Brazil',
+        'loc.bsb': 'Brasília, Brazil',
+        'loc.sp': 'São Paulo, Brazil',
+        'loc.recife': 'Recife, Brazil',
     }
 };
 

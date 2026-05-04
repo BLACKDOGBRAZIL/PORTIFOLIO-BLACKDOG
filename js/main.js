@@ -127,17 +127,7 @@ const statObs = new IntersectionObserver(entries => {
 const statsEl = document.getElementById('stats');
 if (statsEl) statObs.observe(statsEl);
 
-/* ── PORTFOLIO FILTER ── */
-document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        document.querySelectorAll('.port-item').forEach(card => {
-            card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
-        });
-    });
-});
+
 
 /* ── FORM SUBMIT ── */
 function handleSubmit() {
@@ -197,28 +187,28 @@ hamburgers.forEach(hamburger => {
         // Toggle the Glassmorphism overlay
         let glOverlay = document.getElementById('gl-overlay');
         const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
-        
+
         if (!glOverlay) {
             glOverlay = document.createElement('div');
             glOverlay.id = 'gl-overlay';
-            
+
             const modal = document.createElement('div');
             modal.className = 'gl-modal';
-            
+
             const label = document.createElement('div');
             label.className = 'gl-label';
             label.textContent = 'MENU';
-            
+
             const linksWrap = document.createElement('div');
             linksWrap.className = 'gl-links';
-            
+
             const links = [
                 { href: '#sobre', key: 'nav.about' },
                 { href: '#portfolio', key: 'nav.work' },
                 { href: '#servicos', key: 'nav.services' },
                 { href: '#contato', key: 'nav.contact' },
             ];
-            
+
             links.forEach(l => {
                 const a = document.createElement('a');
                 a.href = l.href;
@@ -227,46 +217,46 @@ hamburgers.forEach(hamburger => {
                 a.addEventListener('click', () => closeMobileMenu());
                 linksWrap.appendChild(a);
             });
-            
+
             const footer = document.createElement('div');
             footer.className = 'gl-footer';
-            
+
             const cEmail = document.createElement('div');
             cEmail.className = 'gl-col';
             cEmail.innerHTML = `<span>Email</span><a href="mailto:blckdogbrasil@gmail.com">blckdogbrasil@gmail.com</a>`;
-            
+
             const cPhone = document.createElement('div');
             cPhone.className = 'gl-col';
             cPhone.innerHTML = `<span>WhatsApp</span><a href="https://wa.me/5581998920712" target="_blank" rel="noopener">+55 81 99892-0712</a>`;
-            
+
             footer.appendChild(cEmail);
             footer.appendChild(cPhone);
-            
+
             const btnQuote = document.createElement('button');
             btnQuote.className = 'gl-btn-quote';
             btnQuote.innerHTML = `<span class="cross-icon" style="font-size:16px;">✧</span> <span data-i18n="nav.cta">${typeof t === 'function' ? t('nav.cta') : 'Iniciar Projeto'}</span>`;
             btnQuote.onclick = () => {
                 closeMobileMenu();
-                document.getElementById('contato').scrollIntoView({behavior:'smooth'});
+                document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
             };
-            
+
             modal.appendChild(label);
             modal.appendChild(linksWrap);
             modal.appendChild(footer);
             modal.appendChild(btnQuote);
-            
+
             const closeBtn = document.createElement('button');
             closeBtn.className = 'gl-close-btn';
             closeBtn.setAttribute('aria-label', 'Fechar menu');
             closeBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>`;
             closeBtn.onclick = () => closeMobileMenu();
-            
+
             glOverlay.appendChild(modal);
             glOverlay.appendChild(closeBtn);
-            
+
             document.body.appendChild(glOverlay);
         }
-        
+
         if (menuOpen) {
             glOverlay.classList.add('active');
             hamburgers.forEach(h => {
@@ -670,7 +660,7 @@ window.addEventListener('load', () => {
 (function initTheme() {
     const root = document.documentElement;
     const icon = document.getElementById('theme-icon');
-    const stored = localStorage.getItem('bd-theme') || 'light';
+    const stored = 'light'; // Always start with light mode
 
     const SVG_SUN = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
     const SVG_MOON = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;

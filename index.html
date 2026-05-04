@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Black Dog Studio — Web Design | UI/UX | Branding Digital</title>
-  
+
   <!-- FAVICON -->
   <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
@@ -95,15 +95,10 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-  <!-- Prevent flash of wrong theme — apply before render -->
+  <!-- Always open in light mode -->
   <script>
     (function () {
-      var t = localStorage.getItem('bd-theme');
-      // Default is light — only go dark if explicitly saved as 'dark'
-      if (t !== 'dark') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        if (!t) localStorage.setItem('bd-theme', 'light'); // save default
-      }
+      document.documentElement.setAttribute('data-theme', 'light');
     })();
   </script>
 
@@ -136,7 +131,8 @@
       <a href="#hero" class="nav-logo" aria-label="Black Dog Studio">
         <img src="assets/img/logo.webp" alt="Black Dog Studio" class="nav-logo-img" width="144" height="36"
           fetchpriority="high">
-        <svg class="nav-logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <svg class="nav-logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linejoin="round" stroke-linecap="round">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
       </a>
@@ -153,21 +149,13 @@
           onmouseover="this.style.color='var(--text-1)';this.style.borderColor='var(--border-mid)'"
           onmouseout="this.style.color='var(--text-3)';this.style.borderColor='var(--border-mid)'">
           <span id="theme-icon" style="display:flex;align-items:center;">
-            <!-- Sun SVG (dark mode — click to go light) -->
+            <!-- Moon SVG (light mode — click to go dark) -->
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
           </span>
-          <span id="theme-label">Modo Claro</span>
+          <span id="theme-label">Modo Escuro</span>
         </button>
         <!-- LANG TOGGLE -->
         <div class="lang-toggle" role="group" aria-label="Language">
@@ -205,7 +193,8 @@
           <button class="btn-secondary" data-i18n="hero.cta2"
             onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Iniciar Projeto</button>
         </div>
-        <div class="hero-available reveal reveal-delay-3" data-i18n="hero.available">Disponível para novos projetos</div>
+        <div class="hero-available reveal reveal-delay-3" data-i18n="hero.available">Disponível para novos projetos
+        </div>
       </div>
       <div class="hero-right reveal" id="hero-canvas-wrap">
         <!-- Showreel video — coloque o arquivo video-reel.mp4 na mesma pasta -->
@@ -289,33 +278,27 @@
           <div class="portfolio-section-num mono reveal" data-i18n="portfolio.sectionNum">03 — Trabalhos</div>
           <h2 class="portfolio-title reveal reveal-delay-1" data-i18n="portfolio.title">Projetos</h2>
         </div>
-        <div class="portfolio-filters reveal reveal-delay-2">
-          <button class="filter-btn active" data-filter="all" data-i18n="filter.all">Todos</button>
-          <button class="filter-btn" data-filter="site" data-i18n="filter.sites">Sites</button>
-          <button class="filter-btn" data-filter="branding" data-i18n="filter.branding">Branding</button>
-          <button class="filter-btn" data-filter="uiux">UI/UX</button>
-          <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-        </div>
+
       </div>
 
       <div class="portfolio-list" id="portfolio-grid">
 
-        <a class="port-item reveal" data-category="site" href="https://www.studioabuchain.com/" target="_blank"
+        <a class="port-item reveal" data-category="site" href="https://www.sopraniengineering.com/" target="_blank"
           rel="noopener">
           <span class="port-item-num">01</span>
-          <div class="port-item-thumb pi-c1"><span class="port-item-initials">SA</span></div>
+          <div class="port-item-thumb pi-c5"><span class="port-item-initials">SE</span></div>
           <div class="port-item-body">
-            <div class="port-item-name">Studio Abuchain</div>
+            <div class="port-item-name">Soprani Engineering</div>
             <div class="port-item-meta">
-              <span class="port-item-cat">Site</span>
+              <span class="port-item-cat" data-i18n="cat.site">Site</span>
               <span class="port-item-sep">◆</span>
-              <span class="port-item-loc">Milão, Itália</span>
+              <span class="port-item-loc" data-i18n="loc.milan">Milão, Itália</span>
               <span class="port-item-sep">◆</span>
-              <span class="port-item-url">studioabuchain.com</span>
+              <span class="port-item-url">sopraniengineering.com</span>
             </div>
           </div>
           <div class="port-item-right">
-            <span class="port-item-year">2025</span>
+            <span class="port-item-year">2026</span>
             <span class="port-item-arrow">↗</span>
           </div>
         </a>
@@ -327,11 +310,51 @@
           <div class="port-item-body">
             <div class="port-item-name">Brenda Cardim</div>
             <div class="port-item-meta">
-              <span class="port-item-cat">Site</span>
+              <span class="port-item-cat" data-i18n="cat.site">Site</span>
               <span class="port-item-sep">◆</span>
-              <span class="port-item-loc">Brasil</span>
+              <span class="port-item-loc" data-i18n="loc.bsb">Brasília, Brasil</span>
               <span class="port-item-sep">◆</span>
               <span class="port-item-url">brendacardim.com</span>
+            </div>
+          </div>
+          <div class="port-item-right">
+            <span class="port-item-year">2026</span>
+            <span class="port-item-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="port-item reveal reveal-delay-2" data-category="site" href="https://educandariomeninodeus.com.br/"
+          target="_blank" rel="noopener">
+          <span class="port-item-num">03</span>
+          <div class="port-item-thumb pi-c6"><span class="port-item-initials">EM</span></div>
+          <div class="port-item-body">
+            <div class="port-item-name">Educandário Menino Deus</div>
+            <div class="port-item-meta">
+              <span class="port-item-cat" data-i18n="cat.site">Site</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-loc" data-i18n="loc.pe">Pernambuco, Brasil</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-url">educandariomeninodeus.com.br</span>
+            </div>
+          </div>
+          <div class="port-item-right">
+            <span class="port-item-year">2026</span>
+            <span class="port-item-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="port-item reveal reveal-delay-3" data-category="site" href="https://www.studioabuchain.com/"
+          target="_blank" rel="noopener">
+          <span class="port-item-num">04</span>
+          <div class="port-item-thumb pi-c1"><span class="port-item-initials">SA</span></div>
+          <div class="port-item-body">
+            <div class="port-item-name">Studio Abuchain</div>
+            <div class="port-item-meta">
+              <span class="port-item-cat" data-i18n="cat.site">Site</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-loc" data-i18n="loc.milan">Milão, Itália</span>
+              <span class="port-item-sep">◆</span>
+              <span class="port-item-url">studioabuchain.com</span>
             </div>
           </div>
           <div class="port-item-right">
@@ -340,15 +363,15 @@
           </div>
         </a>
 
-        <div class="port-item reveal reveal-delay-2" data-category="site">
-          <span class="port-item-num">03</span>
+        <div class="port-item reveal reveal-delay-4" data-category="site">
+          <span class="port-item-num">05</span>
           <div class="port-item-thumb pi-c3"><span class="port-item-initials">VA</span></div>
           <div class="port-item-body">
             <div class="port-item-name">Versa Arquitetura</div>
             <div class="port-item-meta">
-              <span class="port-item-cat">Site</span>
+              <span class="port-item-cat" data-i18n="cat.site">Site</span>
               <span class="port-item-sep">◆</span>
-              <span class="port-item-loc">São Paulo, Brasil</span>
+              <span class="port-item-loc" data-i18n="loc.sp">São Paulo, Brasil</span>
               <span class="port-item-sep">◆</span>
               <span class="port-item-url">versaarquitetura.com.br</span>
             </div>
@@ -359,15 +382,15 @@
           </div>
         </div>
 
-        <div class="port-item reveal reveal-delay-3" data-category="ecommerce">
-          <span class="port-item-num">04</span>
+        <div class="port-item reveal reveal-delay-5" data-category="ecommerce">
+          <span class="port-item-num">06</span>
           <div class="port-item-thumb pi-c4"><span class="port-item-initials">LE</span></div>
           <div class="port-item-body">
             <div class="port-item-name">Lumen Estética</div>
             <div class="port-item-meta">
-              <span class="port-item-cat">E-commerce</span>
+              <span class="port-item-cat" data-i18n="cat.ecommerce">E-commerce</span>
               <span class="port-item-sep">◆</span>
-              <span class="port-item-loc">Recife, Brasil</span>
+              <span class="port-item-loc" data-i18n="loc.recife">Recife, Brasil</span>
               <span class="port-item-sep">◆</span>
               <span class="port-item-url">lumenstetica.com.br</span>
             </div>
@@ -383,7 +406,8 @@
       </div>
 
       <div class="portfolio-footer">
-        <button class="btn-secondary" data-i18n="nav.cta" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Iniciar Projeto</button>
+        <button class="btn-secondary" data-i18n="nav.cta"
+          onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Iniciar Projeto</button>
       </div>
     </section>
 
@@ -417,7 +441,8 @@
             <span class="svc-tag" data-i18n="tag.responsive">Responsivo</span>
             <span class="svc-tag">SEO</span>
           </div>
-          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})"
+            style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
         </div>
 
         <!-- 02 -->
@@ -436,7 +461,8 @@
             <span class="svc-tag" data-i18n="tag.prototype">Prototipação</span>
             <span class="svc-tag" data-i18n="tag.usability">Usabilidade</span>
           </div>
-          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})"
+            style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
         </div>
 
         <!-- 03 -->
@@ -454,7 +480,8 @@
             <span class="svc-tag" data-i18n="tag.identity">Identidade</span>
             <span class="svc-tag">Brand Guide</span>
           </div>
-          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})"
+            style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
         </div>
 
         <!-- 04 -->
@@ -472,7 +499,8 @@
             <span class="svc-tag">Mobile First</span>
             <span class="svc-tag">Cross-browser</span>
           </div>
-          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})"
+            style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
         </div>
 
         <!-- 05 -->
@@ -492,7 +520,8 @@
             <span class="svc-tag" data-i18n="tag.payments">Pagamentos</span>
             <span class="svc-tag" data-i18n="tag.catalog">Catálogo</span>
           </div>
-          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})"
+            style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
         </div>
 
         <!-- 06 -->
@@ -510,7 +539,8 @@
             <span class="svc-tag" data-i18n="tag.security">Segurança</span>
             <span class="svc-tag">Backup</span>
           </div>
-          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
+          <span class="svc-link" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})"
+            style="cursor:pointer" data-i18n="svc.more">Saiba mais →</span>
         </div>
 
       </div>
